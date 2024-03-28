@@ -8,13 +8,16 @@ namespace PotionCraftingSimulator
 {
     internal class Item
     {
-        // generalized craft algorithm 
-        public Item CraftItem(Recipe recipe)
+        public string ItemName = "";
+        public string ItemDescription = "";
+        public double ItemValue = 0;
+        public double ItemAmount = 1;
+        public string ItemAmountType = "cup(s)";
+        string space = "      ";
+
+        public string GetItemDescription()
         {
-            //if all the required elements for the recipe are in the player's inventory
-            // AND the amounts of those elements are equal to or greater than what is specified in the recipe
-            // then remove the ingredient items from the player's inventory or modify the amounts of the items
-            // and return an instance of the Item class that matches the recipe
+            return $"{ItemAmount} {ItemAmountType} {ItemName} ({ItemValue.ToString("C")} ea)\n{space}{space}{space}{ItemDescription}\n";
         }
     }
 }
