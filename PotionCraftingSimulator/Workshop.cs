@@ -9,14 +9,11 @@ namespace PotionCraftingSimulator
 {
     internal class Workshop
     {
-        Player player = new Player()
+        public Player player = new Player()
         {
             Inventory = new List<Item>()
         };
-        Vendor vendor = new Vendor()
-        {
-            Inventory = new List<Item>()
-        };
+        Vendor vendor = new Vendor();
         Recipe recipe = new Recipe();
         List<Recipe> Recipes = new List<Recipe>();
 
@@ -37,11 +34,6 @@ namespace PotionCraftingSimulator
             }
             return output;
         }
-        public string Trade()
-        {
-            ShowInventory("vendor");
-            return "\nTrade is not yet functional.\n";
-        }
         public string ShowRecipes()
         {
             string output = "Recipes:\n";
@@ -56,12 +48,26 @@ namespace PotionCraftingSimulator
             Person person = player;
             if (p == "vendor") person = vendor;
 
-            string output = $"Current inventory:\n";
+            string output = $"The vendor's current inventory:\n";
             foreach (Item i in person.Inventory)
             {
                 output += $"  * {i.ItemName} ({i.ItemAmount})\n";
             }
             return output;
+        }
+        public bool CheckIfInputIsValid(string s)
+        {
+            Person person = player;
+            Item tempItem = person.Inventory.Find(tempItem => tempItem.ItemName.Equals(s, StringComparison.InvariantCultureIgnoreCase));
+
+            if (tempItem  != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         public string ShowPlayerName() => player.Name;
         public string ShowPlayerNameAndCurrency() => $"{player.Name} {player.Currency.ToString("c")}";

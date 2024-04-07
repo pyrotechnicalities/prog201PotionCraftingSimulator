@@ -5,21 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PotionCraftingSimulator"
         mc:Ignorable="d"
-        Title="Potion Crafting Simulator" Height="450" Width="800">
+        Title="Potion Crafting Simulator" Height="500" Width="850">
     <Grid Background="#FFE0E0E0" Loaded="Grid_Loaded">
-        <Button x:Name="Craft" Content="Craft" HorizontalAlignment="Left" Margin="26,17,0,0" VerticalAlignment="Top" Height="80" Width="105" Click="Craft_Click"/>
-        <Button x:Name="Buy" Content="Buy" HorizontalAlignment="Left" Margin="154,17,0,0" VerticalAlignment="Top" Height="80" Width="105" Click="Buy_Click"/>
-        <Button x:Name="Sell" Content="Sell" HorizontalAlignment="Left" Margin="278,17,0,0" VerticalAlignment="Top" Height="80" Width="105" Click="Sell_Click"/>
-        <TextBlock x:Name="PlayerName" HorizontalAlignment="Left" Margin="486,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="White" Height="39" Width="300"/>
-        <ScrollViewer Margin="486,59,12,28" Width="302" VerticalScrollBarVisibility ="Auto" Background="White">
+        <Button x:Name="Craft" Content="Craft" HorizontalAlignment="Left" Margin="25,7,0,0" VerticalAlignment="Top" Height="80" Width="105" Click="Craft_Click"/>
+        <Button x:Name="Buy" Content="Buy" HorizontalAlignment="Left" Margin="154,8,0,0" VerticalAlignment="Top" Height="80" Width="105" Click="Buy_Click"/>
+        <Button x:Name="Sell" Content="Sell" HorizontalAlignment="Left" Margin="278,9,0,0" VerticalAlignment="Top" Height="80" Width="105" Click="Sell_Click"/>
+        <TextBlock x:Name="PlayerName" Margin="527,13,23,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="White" Height="39"/>
+        <ScrollViewer Margin="526,65,22,22" Width="302" VerticalScrollBarVisibility ="Auto" Background="White">
             <TextBlock x:Name="PlayerInventory" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top"  />
         </ScrollViewer>
 
-        <ScrollViewer Margin="26,112,340,75" Width="434" VerticalScrollBarVisibility ="Auto" Background="White">
+        <ScrollViewer Margin="25,98,0,89" VerticalScrollBarVisibility ="Auto" Background="White" HorizontalAlignment="Left" Width="476">
             <TextBlock x:Name="Output" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top"/>
         </ScrollViewer>
-        <TextBox x:Name="Input" HorizontalAlignment="Left" Margin="26,369,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="306" Height="49"/>
-        <Button x:Name="Submit" Content="Submit" HorizontalAlignment="Left" Margin="352,368,0,0" VerticalAlignment="Top" Height="51" Width="106" Click="Submit_Click"/>
+        <TextBox x:Name="Input" Margin="25,0,480,31" TextWrapping="Wrap" Text="" Height="49" VerticalAlignment="Bottom"/>
+        <Button x:Name="Submit" Content="Submit" HorizontalAlignment="Left" Margin="392,0,0,31" VerticalAlignment="Bottom" Height="49" Width="106" Click="Submit_Click"/>
 
     </Grid>
 </Window>

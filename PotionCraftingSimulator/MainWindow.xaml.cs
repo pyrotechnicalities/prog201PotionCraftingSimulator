@@ -91,15 +91,39 @@ namespace PotionCraftingSimulator
             }
             else if (mode == Mode.Craft)
             {
-
+                // on submit in craft mode
+                if (workshop.CheckIfInputIsValid(Input.Text) == true)
+                {
+                    workshop.player.CraftItem();
+                }
+                else
+                {
+                    Output.Text = "Sorry, that's not a valid input. Try again.";
+                }
             }
             else if (mode == Mode.Buy)
             {
-
+                // on submit in buy mode
+                if (workshop.CheckIfInputIsValid(Input.Text) == true)
+                {
+                    // add what you bought to your inventory and then subtract that amount of money
+                }
+                else
+                {
+                    Output.Text = "Sorry, that's not a valid input. Try again.";
+                }
             }
             else if (mode == Mode.Sell)
             {
-                
+                // on submit in sell mode
+                if (workshop.CheckIfInputIsValid(Input.Text) == true)
+                {
+                    // remove what you sold from your inventory and then add money to your balance
+                }
+                else
+                {
+                    Output.Text = "Sorry, that's not a valid input. Try again.";
+                }
             }
             else
             {
@@ -111,18 +135,27 @@ namespace PotionCraftingSimulator
 
         private void Craft_Click(object sender, RoutedEventArgs e)
         {
+            Craft.Visibility = Visibility.Collapsed;
+            Sell.Visibility = Visibility.Visible;
+            Buy.Visibility = Visibility.Visible;
             mode = Mode.Craft;
-            Output.Text = workshop.ShowRecipes();
+            Output.Text = "Select a recipe from the list to craft.\n\n" + workshop.ShowRecipes();
         }
 
         private void Buy_Click(object sender, RoutedEventArgs e)
         {
+            Buy.Visibility = Visibility.Collapsed;
+            Craft.Visibility = Visibility.Visible;
+            Sell.Visibility = Visibility.Visible;
             mode = Mode.Buy;
             Output.Text = workshop.ShowInventory("vendor");
         }
 
         private void Sell_Click(object sender, RoutedEventArgs e)
         {
+            Sell.Visibility = Visibility.Collapsed;
+            Buy.Visibility = Visibility.Visible;
+            Craft.Visibility = Visibility.Visible;
             mode = Mode.Sell;
             Output.Text = "What would you like to sell?";
         }
