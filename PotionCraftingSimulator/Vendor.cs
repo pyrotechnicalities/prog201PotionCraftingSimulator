@@ -10,6 +10,7 @@ namespace PotionCraftingSimulator
     {
         public Vendor()
         {
+            Name = "Vendor";
             Inventory = new List<Item>
             {
                 new Item() {ItemName = "Water", ItemDescription = "Basic drinking water.", ItemValue = 0.15, ItemAmount = 15, ItemAmountType = "cup(s)" },

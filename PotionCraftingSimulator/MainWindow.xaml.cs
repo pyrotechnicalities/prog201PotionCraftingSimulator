@@ -26,10 +26,10 @@ namespace PotionCraftingSimulator
     {
         // Code framework from various examples by Janell Baxter
         // TO-DOS:
-        // - basic crafting algorithm 
-        // - improve basic functionality so the game is actually playable
-        // - finish first prototype
+        // - add the rest of the items into the inventories of the player and the vendor
         // - fix item values (rebalancing)
+        // - items randomly worth more 
+        // - investigate money not working, vendor inventory issue
 
         Workshop workshop = new Workshop();
         Mode mode = Mode.Setup;
@@ -44,7 +44,7 @@ namespace PotionCraftingSimulator
         }
         private void RefreshInformationDisplays()
         {
-            PlayerInventory.Text = workshop.ShowInventory("player");
+            PlayerInventory.Text = workshop.player.ShowInventory();
             PlayerName.Text = workshop.ShowPlayerNameAndCurrency();
         }
         private void SetUp()
@@ -92,37 +92,66 @@ namespace PotionCraftingSimulator
             else if (mode == Mode.Craft)
             {
                 // on submit in craft mode
-                if (workshop.CheckIfInputIsValid(Input.Text) == true)
+                if (int.TryParse(Input.Text, out int value))
                 {
-                    workshop.player.CraftItem();
-                }
-                else
-                {
-                    Output.Text = "Sorry, that's not a valid input. Try again.";
+                    if (value >= 0 && value <= workshop.RecipeCount())
+                    {
+                        Output.Text = $"{workshop.player.CraftItem(workshop.Recipes[value-1])}";
+                        RefreshInformationDisplays();
+                        Craft.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        Output.Text = "Sorry, that's not a valid input. Try again.";
+                        Craft.Visibility = Visibility.Visible;
+                    }
                 }
             }
             else if (mode == Mode.Buy)
             {
                 // on submit in buy mode
-                if (workshop.CheckIfInputIsValid(Input.Text) == true)
+                if (int.TryParse(Input.Text, out int value))
                 {
                     // add what you bought to your inventory and then subtract that amount of money
-                }
-                else
-                {
-                    Output.Text = "Sorry, that's not a valid input. Try again.";
+                    if (value >= 0 && value <= workshop.vendor.Inventory.Count() && workshop.HasMoney(workshop.vendor.Inventory[value - 1]) == true)
+                    {
+                        workshop.player.AddItem(workshop.player.Inventory[value - 1]);
+                        workshop.player.RemoveCurrency(workshop.vendor.Inventory[value - 1]);
+                        workshop.vendor.RemoveItem(workshop.vendor.Inventory[value - 1]);
+                        RefreshInformationDisplays();
+                        Output.Text = workshop.vendor.ShowInventory();
+                        Buy.Visibility = Visibility.Visible;
+                    }
+                    else if (value >= 0 && value <= workshop.vendor.Inventory.Count() && workshop.HasMoney(workshop.vendor.Inventory[value - 1]) == false)
+                    {
+                        Output.Text = "Sorry, you don't have enough money to buy that.";
+                        Buy.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        Output.Text = "Sorry, that's not a valid input. Try again.";
+                        Buy.Visibility = Visibility.Visible;
+                    }
                 }
             }
             else if (mode == Mode.Sell)
             {
                 // on submit in sell mode
-                if (workshop.CheckIfInputIsValid(Input.Text) == true)
+                if (int.TryParse(Input.Text, out int value))
                 {
                     // remove what you sold from your inventory and then add money to your balance
-                }
-                else
-                {
-                    Output.Text = "Sorry, that's not a valid input. Try again.";
+                    if (value >= 0 && value <= workshop.player.Inventory.Count())
+                    {
+                        workshop.player.AddCurrency(workshop.player.Inventory[value - 1]);
+                        workshop.player.RemoveItem(workshop.player.Inventory[value - 1]);
+                        RefreshInformationDisplays();
+                        Sell.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        Output.Text = "Sorry, that's not a valid input. Try again.";
+                        Sell.Visibility = Visibility.Visible;
+                    }
                 }
             }
             else
@@ -140,6 +169,7 @@ namespace PotionCraftingSimulator
             Buy.Visibility = Visibility.Visible;
             mode = Mode.Craft;
             Output.Text = "Select a recipe from the list to craft.\n\n" + workshop.ShowRecipes();
+            PlayerInventory.Text = workshop.player.ShowInventory();
         }
 
         private void Buy_Click(object sender, RoutedEventArgs e)
@@ -148,7 +178,7 @@ namespace PotionCraftingSimulator
             Craft.Visibility = Visibility.Visible;
             Sell.Visibility = Visibility.Visible;
             mode = Mode.Buy;
-            Output.Text = workshop.ShowInventory("vendor");
+            Output.Text = workshop.vendor.ShowInventory();
         }
 
         private void Sell_Click(object sender, RoutedEventArgs e)

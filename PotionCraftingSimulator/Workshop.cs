@@ -9,13 +9,10 @@ namespace PotionCraftingSimulator
 {
     internal class Workshop
     {
-        public Player player = new Player()
-        {
-            Inventory = new List<Item>()
-        };
-        Vendor vendor = new Vendor();
+        public Player player = new Player();
+        public Vendor vendor = new Vendor();
         Recipe recipe = new Recipe();
-        List<Recipe> Recipes = new List<Recipe>();
+        public List<Recipe> Recipes = new List<Recipe>();
 
         public Workshop()
         {
@@ -37,37 +34,25 @@ namespace PotionCraftingSimulator
         public string ShowRecipes()
         {
             string output = "Recipes:\n";
+            int number = 1;
             foreach (Recipe r in Recipes)
             {
-                output += $"  * {r.GetRecipeDescription()}\n";
+                output += $"  {number}. {r.GetRecipeDescription()}\n";
+                number++;
             }
             return output;
         }
-        public string ShowInventory(string p)
+        public int RecipeCount()
         {
-            Person person = player;
-            if (p == "vendor") person = vendor;
-
-            string output = $"The vendor's current inventory:\n";
-            foreach (Item i in person.Inventory)
-            {
-                output += $"  * {i.ItemName} ({i.ItemAmount})\n";
-            }
-            return output;
+            return Recipes.Count;
         }
-        public bool CheckIfInputIsValid(string s)
+        public bool HasMoney(Item item)
         {
-            Person person = player;
-            Item tempItem = person.Inventory.Find(tempItem => tempItem.ItemName.Equals(s, StringComparison.InvariantCultureIgnoreCase));
-
-            if (tempItem  != null)
+            if (player.Currency >= item.ItemValue)
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
         public string ShowPlayerName() => player.Name;
         public string ShowPlayerNameAndCurrency() => $"{player.Name} {player.Currency.ToString("c")}";
