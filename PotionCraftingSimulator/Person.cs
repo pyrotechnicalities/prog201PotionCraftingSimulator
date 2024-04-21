@@ -36,6 +36,13 @@ namespace PotionCraftingSimulator
             {
                 if (item.ItemName == name) item.ItemAmount -= amount;
             }
+            for (int i = 0; i < Inventory.Count; i++)
+            {
+                if (Inventory[i].ItemAmount == 0)
+                {
+                    RemoveItem(Inventory[i]);
+                }
+            }
         }
         public string ShowInventory()
         {

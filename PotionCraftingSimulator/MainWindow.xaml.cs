@@ -26,10 +26,10 @@ namespace PotionCraftingSimulator
     {
         // Code framework from various examples by Janell Baxter
         // TO-DOS:
-        // - add the rest of the items into the inventories of the player and the vendor
         // - fix item values (rebalancing)
         // - items randomly worth more 
         // - investigate money not working, vendor inventory issue
+        // - add items to existing stash if they're already in the inventory
 
         Workshop workshop = new Workshop();
         Mode mode = Mode.Setup;
