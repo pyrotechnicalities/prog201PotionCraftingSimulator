@@ -30,18 +30,18 @@ namespace PotionCraftingSimulator
             }
             return 0;
         }
-        public void ChangeAmount(string name, double amount)
+        public void SubtractAmount(string name, double amount)
         {
             foreach(Item item in Inventory)
             {
                 if (item.ItemName == name) item.ItemAmount -= amount;
             }
-            for (int i = 0; i < Inventory.Count; i++)
+        }
+        public void AddAmount(string name, double amount)
+        {
+            foreach (Item item in Inventory)
             {
-                if (Inventory[i].ItemAmount == 0)
-                {
-                    RemoveItem(Inventory[i]);
-                }
+                if (item.ItemName == name) item.ItemAmount += amount;
             }
         }
         public string ShowInventory()
@@ -50,7 +50,7 @@ namespace PotionCraftingSimulator
             string output = $"{Name}'s current inventory:\n";
             foreach (Item i in Inventory)
             {
-                output += $"  {number}. {i.ItemName} ({i.ItemAmount} {i.ItemAmountType}, {i.ItemValue.ToString("C")})\n";
+                output += $"  {number}. {i.ItemName} ({i.ItemAmount} {i.ItemAmountType}, {i.ItemValue.ToString("C")} each)\n";
                 number++;
             }
             return output;

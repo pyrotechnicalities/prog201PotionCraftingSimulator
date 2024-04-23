@@ -9,6 +9,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+/*
+ * Programming II Craft Project: Potion Crafting Simulator
+ * Leo Richnofsky
+ * 4/22/24
+ * Credits:
+ * Most code by Leo Richnofsky
+ * Code framework from various examples by Janell Baxter
+ * Assistance with generalized craft algorithm and associated methods also from Janell Baxter
+ * Help with switch statement in Player.cs from https://stackoverflow.com/questions/68578/multiple-cases-in-switch-statement
+ */
+
 namespace PotionCraftingSimulator
 {
     /// <summary>
@@ -27,9 +38,9 @@ namespace PotionCraftingSimulator
         // Code framework from various examples by Janell Baxter
         // TO-DOS:
         // - fix item values (rebalancing)
-        // - items randomly worth more 
-        // - investigate money not working, vendor inventory issue
-        // - add items to existing stash if they're already in the inventory
+        // - items randomly worth more - I have the framework of this but it's not actually DOING the right thing
+        // - investigate money not working
+        // - more inventory bugs (able to craft recipes that need another crafted item first- connected to the issue of being able to craft a recipe if you have MOST of the ingredients)
 
         Workshop workshop = new Workshop();
         Mode mode = Mode.Setup;
@@ -58,7 +69,7 @@ namespace PotionCraftingSimulator
         }
         private void ShowMenu()
         {
-            string output = $"{workshop.ShowPlayerName()}, what would you like to do?\nClick a button above to craft, trade, or see recipes.\n";
+            string output = $"{workshop.ShowPlayerName()}, what would you like to do?\nClick a button above to craft new items, buy ingredients, or sell items.\n";
             Output.Text = output;
         }
         private void HideButtons()
@@ -113,18 +124,30 @@ namespace PotionCraftingSimulator
                 if (int.TryParse(Input.Text, out int value))
                 {
                     // add what you bought to your inventory and then subtract that amount of money
-                    if (value >= 0 && value <= workshop.vendor.Inventory.Count() && workshop.HasMoney(workshop.vendor.Inventory[value - 1]) == true)
+                    if (value >= 0 && value <= workshop.vendor.Inventory.Count() && workshop.HasMoney(workshop.vendor.Inventory[value - 1]) && workshop.vendor.GetAmount(workshop.vendor.Inventory[value - 1].ItemName) > 0)
                     {
-                        workshop.player.AddItem(workshop.player.Inventory[value - 1]);
+                        if (workshop.player.IsInInventory(workshop.player.Inventory[value - 1].ItemName))
+                        {
+                            workshop.player.AddAmount(workshop.player.Inventory[value - 1].ItemName, 1);
+                        }
+                        else
+                        {
+                            workshop.player.AddItem(workshop.player.Inventory[value - 1]);
+                        }
                         workshop.player.RemoveCurrency(workshop.vendor.Inventory[value - 1]);
-                        workshop.vendor.RemoveItem(workshop.vendor.Inventory[value - 1]);
+                        workshop.vendor.SubtractAmount(workshop.player.Inventory[value - 1].ItemName, 1);
                         RefreshInformationDisplays();
                         Output.Text = workshop.vendor.ShowInventory();
                         Buy.Visibility = Visibility.Visible;
                     }
-                    else if (value >= 0 && value <= workshop.vendor.Inventory.Count() && workshop.HasMoney(workshop.vendor.Inventory[value - 1]) == false)
+                    else if (value >= 0 && value <= workshop.vendor.Inventory.Count() && !workshop.HasMoney(workshop.vendor.Inventory[value - 1]))
                     {
                         Output.Text = "Sorry, you don't have enough money to buy that.";
+                        Buy.Visibility = Visibility.Visible;
+                    }
+                    else if (workshop.vendor.GetAmount(workshop.vendor.Inventory[value - 1].ItemName) == 0)
+                    {
+                        Output.Text = "Out of stock!";
                         Buy.Visibility = Visibility.Visible;
                     }
                     else
@@ -168,7 +191,7 @@ namespace PotionCraftingSimulator
             Sell.Visibility = Visibility.Visible;
             Buy.Visibility = Visibility.Visible;
             mode = Mode.Craft;
-            Output.Text = "Select a recipe from the list to craft.\n\n" + workshop.ShowRecipes();
+            Output.Text = "Select a recipe from the list to craft by inputting the associated number.\n\n" + workshop.ShowRecipes();
             PlayerInventory.Text = workshop.player.ShowInventory();
         }
 
