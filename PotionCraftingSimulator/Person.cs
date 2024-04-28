@@ -59,17 +59,5 @@ namespace PotionCraftingSimulator
         {
             Inventory.Add(item);
         }
-        public void RemoveItem(Item item)
-        {
-            Inventory.Remove(item);
-        }
-        public void AddCurrency(Item item)
-        {
-            Currency += item.ItemValue;
-        }
-        public void RemoveCurrency(Item item)
-        {
-            Currency -= item.ItemValue;
-        }
     }
 }

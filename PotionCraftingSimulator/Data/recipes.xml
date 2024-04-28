@@ -1,33 +1,33 @@
 <recipes>
-	<recipe recipeName = "Chamomile Tea" recipeDescription = "A sweet-tasting tea that helps you relax. Good for anxiety sufferers." recipeValue = "2.50" recipeAmount = "1" recipeAmountType = "mug(s)">
-		<item itemName = "Water" itemDescription = "Basic drinking water." itemValue = "0.15" itemAmount = "1" itemAmountType = "cup(s)"></item>
-		<item itemName = "Chamomile" itemDescription = "A portion of dried chamomile leaves." itemValue = ".30" itemAmount = "1" itemAmountType = "tsp"></item>
+	<recipe recipeName = "Chamomile Tea" recipeDescription = "A sweet-tasting tea that helps you relax. Good for anxiety sufferers." recipeValue = "3.00" recipeAmount = "1" recipeAmountType = "mug(s)">
+		<item itemName = "Chamomile" itemDescription = "A portion of dried chamomile leaves." itemValue = "1.40" itemAmount = "1" itemAmountType = "tsp"></item>
+		<item itemName = "Water" itemDescription = "Basic drinking water." itemValue = "1.30" itemAmount = "1" itemAmountType = "cup(s)"></item>
 	</recipe>
 	<recipe recipeName = "Sleeping Potion" recipeDescription = "A slightly bitter potion that will settle your mind and help you sleep." recipeValue = "8.00" recipeAmount = "1" recipeAmountType = "bottle(s)">
-		<item itemName = "Chamomile Tea" itemDescription = "A sweet-tasting tea that helps you relax. Good for anxiety sufferers." itemValue = "2.50" itemAmount = "1" itemAmountType = "mug"></item>
-		<item itemName = "Ashwagandha" itemDescription = "An herb commonly used to reduce stress and promote better sleep." itemValue = ".75" itemAmount = "1/2" itemAmountType = "tsp"></item>
-		<item itemName = "Dried Lavender" itemDescription = "A purple flower commonly used to treat insomnia." itemValue = ".55" itemAmount = "1/2" itemAmountType = "tsp"></item>
-		<item itemName = "Lemon Balm" itemDescription = "A lemony-scented herb commonly used to reduce stress and treat insomnia and/or anxiety." itemValue = ".40" itemAmount = "1/2" itemAmountType = "tsp"></item>
+		<item itemName = "Chamomile Tea" itemDescription = "A sweet-tasting tea that helps you relax. Good for anxiety sufferers." itemValue = "3.00" itemAmount = "1" itemAmountType = "mug"></item>
+		<item itemName = "Ashwagandha" itemDescription = "An herb commonly used to reduce stress and promote better sleep." itemValue = "1.50" itemAmount = "1/2" itemAmountType = "tsp"></item>
+		<item itemName = "Dried Lavender" itemDescription = "A purple flower commonly used to treat insomnia." itemValue = "2.00" itemAmount = "1/2" itemAmountType = "tsp"></item>
+		<item itemName = "Lemon Balm" itemDescription = "A lemony-scented herb commonly used to reduce stress and treat insomnia and/or anxiety." itemValue = ".60" itemAmount = "1/2" itemAmountType = "tsp"></item>
 	</recipe>
-	<recipe recipeName = "Health Potion" recipeDescription = "Bitter potion that restores your health." recipeValue = "5.00" recipeAmount = "1" recipeAmountType = "bottle(s)">
-		<item itemName = "Slime" itemDescription = "A tube of freshly harvested monster slime. Better not drink this by itself..." itemValue = "0.50" itemAmount = "4" itemAmountType = "bottle(s)"></item>
-		<item itemName = "Dried St. John's Wort" itemDescription = "A medicinal herb commonly used to promote wound healing." itemValue = ".85" itemAmount = "1/2" itemAmountType = "tsp"></item>
+	<recipe recipeName = "Health Potion" recipeDescription = "Bitter potion that restores your health." recipeValue = "15.00" recipeAmount = "1" recipeAmountType = "bottle(s)">
+		<item itemName = "Slime" itemDescription = "A tube of freshly harvested monster slime. Better not drink this by itself..." itemValue = "3.00" itemAmount = "4" itemAmountType = "bottle(s)"></item>
+		<item itemName = "Dried St. John's Wort" itemDescription = "A medicinal herb commonly used to promote wound healing." itemValue = "1.20" itemAmount = "1/2" itemAmountType = "tsp"></item>
 	</recipe>
-	<recipe recipeName = "Focus Potion" recipeDescription = "A curious potion that seems to boost your ability to focus. I wonder if this was included as wish fufillment from the programmer?" recipeValue = "15.00" recipeAmount = "1" recipeAmountType = "bottle(s)">
-		<item itemName = "Green Tea" itemDescription = "A slightly bitter tea that improves your memory and focus." itemValue = "1.50" itemAmount = "1" itemAmountType = "mug"></item>
-		<item itemName = "Dried Sage" itemDescription = "An aromatic herb that can increase brain function in areas related to memory and attention." itemValue = ".35" itemAmount = "3/4" itemAmountType = "tsp"></item>
-		<item itemName = "Concentrated Cat's Purr" itemDescription = "A mysterious vial that somehow contains a cat's purr in liquid form. Don't ask us how we got it. Has stress-reducing capabilities." itemValue = "6.00" itemAmount = "1" itemAmountType = "vial"></item>
-		<item itemName = "Licorice Extract" itemDescription = "For taste!" itemValue = "1.50" itemAmount = "2" itemAmountType = "cups"></item>
+	<recipe recipeName = "Focus Potion" recipeDescription = "A curious potion that seems to boost your ability to focus. I wonder if this was included as wish fufillment from the programmer?" recipeValue = "25.00" recipeAmount = "1" recipeAmountType = "bottle(s)">
+		<item itemName = "Green Tea" itemDescription = "A slightly bitter tea that improves your memory and focus." itemValue = "4.00" itemAmount = "1" itemAmountType = "mug"></item>
+		<item itemName = "Dried Sage" itemDescription = "An aromatic herb that can increase brain function in areas related to memory and attention." itemValue = "1.35" itemAmount = "3/4" itemAmountType = "tsp"></item>
+		<item itemName = "Concentrated Cat's Purr" itemDescription = "A mysterious vial that somehow contains a cat's purr in liquid form. Don't ask us how we got it. Has stress-reducing capabilities." itemValue = "13.15" itemAmount = "1" itemAmountType = "vial"></item>
+		<item itemName = "Licorice Extract" itemDescription = "For taste!" itemValue = "3.50" itemAmount = "2" itemAmountType = "cups"></item>
 	</recipe>
 	<recipe recipeName = "Apple-Vanilla Tea" recipeDescription = "A very sweet-tasting tea that can act as an aphrodisiac." recipeValue = "15.00" recipeAmount = "1" recipeAmountType = "mug(s)">
 		<item itemName = "Vanilla Extract" itemDescription = "A sweet substance that promotes pure love." itemValue = "2.50" itemAmount = "2" itemAmountType = "tsp"></item>
-		<item itemName = "Apple Juice" itemDescription = "Tasty juice made from the best apples money can buy. Promotes romance!" itemValue = "3.00" itemAmount = "2" itemAmountType = "cups"></item>
-		<item itemName = "Water" itemDescription = "Basic drinking water." itemValue = "0.15" itemAmount = "1" itemAmountType = "cup(s)"></item>
+		<item itemName = "Apple Juice" itemDescription = "Tasty juice made from the best apples money can buy. Promotes romance!" itemValue = "3.50" itemAmount = "2" itemAmountType = "cups"></item>
+		<item itemName = "Water" itemDescription = "Basic drinking water." itemValue = "1.30" itemAmount = "1" itemAmountType = "cup(s)"></item>
 	</recipe>
-	<recipe recipeName = "Love Potion" recipeDescription = "A dangerous potion that can be used to make a person infatuated with the next person they see. Use with caution." recipeValue = "150.00" recipeAmount = "1" recipeAmountType = "bottle(s)">
+	<recipe recipeName = "Love Potion" recipeDescription = "A dangerous potion that can be used to make a person infatuated with the next person they see. Use with caution." recipeValue = "175.00" recipeAmount = "1" recipeAmountType = "bottle(s)">
+		<item itemName = "Apple-Vanilla Tea" itemDescription = "A very sweet-tasting tea that van act as an aphrodisiac." itemValue = "15.00" itemAmount = "1" itemAmountType = "mug"></item>
 		<item itemName = "Cinnamon" itemDescription = "A spicy tasting herb to ~spice~ up your romance." itemValue = ".40" itemAmount = "1/2" itemAmountType = "tsp"></item>
 		<item itemName = "Unicorn Horn Shavings" itemDescription = "A very rare substance that can only be harvested by those pure enough of heart to approach a unicorn. Has very powerful protective properties." itemValue = "40.00" itemAmount = "1" itemAmountType = "pinch"></item>
-		<item itemName = "Apple-Vanilla Tea" itemDescription = "A very sweet-tasting tea that van act as an aphrodisiac." itemValue = "15.00" itemAmount = "1" itemAmountType = "mug"></item>
 		<item itemName = "Red Wine" itemDescription = "An alcoholic beverage said to act as an aphrodisiac." itemValue = "50.00" itemAmount = "2" itemAmountType = "cups"></item>
 	</recipe>
 </recipes>

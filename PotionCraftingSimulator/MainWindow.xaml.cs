@@ -36,11 +36,6 @@ namespace PotionCraftingSimulator
     public partial class MainWindow : Window
     {
         // Code framework from various examples by Janell Baxter
-        // TO-DOS:
-        // - fix item values (rebalancing)
-        // - items randomly worth more - I have the framework of this but it's not actually DOING the right thing
-        // - investigate money not working
-        // - more inventory bugs (able to craft recipes that need another crafted item first- connected to the issue of being able to craft a recipe if you have MOST of the ingredients)
 
         Workshop workshop = new Workshop();
         Mode mode = Mode.Setup;
@@ -134,10 +129,10 @@ namespace PotionCraftingSimulator
                         {
                             workshop.player.AddItem(workshop.player.Inventory[value - 1]);
                         }
-                        workshop.player.RemoveCurrency(workshop.vendor.Inventory[value - 1]);
-                        workshop.vendor.SubtractAmount(workshop.player.Inventory[value - 1].ItemName, 1);
+                        workshop.player.Currency -= workshop.vendor.Inventory[value - 1].ItemValue;
+                        workshop.vendor.SubtractAmount(workshop.vendor.Inventory[value - 1].ItemName, 1);
                         RefreshInformationDisplays();
-                        Output.Text = workshop.vendor.ShowInventory();
+                        Output.Text = "Input the number of the item you want to purchase.\n" + workshop.vendor.ShowInventory();
                         Buy.Visibility = Visibility.Visible;
                     }
                     else if (value >= 0 && value <= workshop.vendor.Inventory.Count() && !workshop.HasMoney(workshop.vendor.Inventory[value - 1]))
@@ -163,11 +158,16 @@ namespace PotionCraftingSimulator
                 if (int.TryParse(Input.Text, out int value))
                 {
                     // remove what you sold from your inventory and then add money to your balance
-                    if (value >= 0 && value <= workshop.player.Inventory.Count())
+                    if (value >= 0 && value <= workshop.player.Inventory.Count() && workshop.player.GetAmount(workshop.player.Inventory[value - 1].ItemName) > 0)
                     {
-                        workshop.player.AddCurrency(workshop.player.Inventory[value - 1]);
-                        workshop.player.RemoveItem(workshop.player.Inventory[value - 1]);
+                        workshop.player.Currency += workshop.player.Inventory[value - 1].ItemValue;
+                        workshop.player.SubtractAmount(workshop.player.Inventory[value - 1].ItemName, 1);
                         RefreshInformationDisplays();
+                        Sell.Visibility = Visibility.Visible;
+                    }
+                    else if (workshop.player.GetAmount(workshop.player.Inventory[value - 1].ItemName) == 0)
+                    {
+                        Output.Text = "You don't have any of these left to sell!";
                         Sell.Visibility = Visibility.Visible;
                     }
                     else
@@ -201,7 +201,7 @@ namespace PotionCraftingSimulator
             Craft.Visibility = Visibility.Visible;
             Sell.Visibility = Visibility.Visible;
             mode = Mode.Buy;
-            Output.Text = workshop.vendor.ShowInventory();
+            Output.Text = "Input the number of the item you want to purchase.\n" + workshop.vendor.ShowInventory();
         }
 
         private void Sell_Click(object sender, RoutedEventArgs e)
@@ -210,7 +210,7 @@ namespace PotionCraftingSimulator
             Buy.Visibility = Visibility.Visible;
             Craft.Visibility = Visibility.Visible;
             mode = Mode.Sell;
-            Output.Text = "What would you like to sell?";
+            Output.Text = "Input the number of the item you would like to sell.";
         }
     }
 }
