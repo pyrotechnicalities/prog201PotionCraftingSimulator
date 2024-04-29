@@ -1,0 +1,18 @@
+ <inventory>
+ <item itemName = "Water" itemDescription = "Basic drinking water." itemValue = "1.30" itemAmount = "4" itemAmountType = "cup(s)"></item>
+ <item itemName = "Chamomile" itemDescription = "A portion of dried chamomile leaves." itemValue = "1.40" itemAmount = "2" itemAmountType = "tsp"></item>
+ <item itemName = "Ashwagandha" itemDescription = "An herb commonly used to reduce stress and promote better sleep." itemValue = "1.50" itemAmount = "1" itemAmountType = "tsp"></item>
+ <item itemName = "Dried Lavender" itemDescription = "A purple flower commonly used to treat insomnia." itemValue = "2.00" itemAmount = "1" itemAmountType = "tsp"></item>
+ <item itemName = "Lemon Balm" itemDescription = "A lemony-scented herb commonly used to reduce stress and treat insomnia and/or anxiety." itemValue = ".60" itemAmount = "1" itemAmountType = "tsp"></item>
+ <item itemName = "Slime" itemDescription = "A tube of freshly harvested monster slime. Better not drink this by itself..." itemValue = "3.00" itemAmount = "4" itemAmountType = "bottle(s)"></item>
+ <item itemName = "Dried St. John's Wort" itemDescription = "A medicinal herb commonly used to promote wound healing." itemValue = "1.20" itemAmount = "1" itemAmountType = "tsp"></item>
+ <item itemName = "Green Tea" itemDescription = "A slightly bitter tea that improves your memory and focus." itemValue = "4.00" itemAmount = "1" itemAmountType = "mug"></item>
+ <item itemName = "Dried Sage" itemDescription = "An aromatic herb that can increase brain function in areas related to memory and attention." itemValue = "1.35" itemAmount = "1" itemAmountType = "tsp"></item>
+ <item itemName = "Concentrated Cat's Purr" itemDescription = "A mysterious vial that somehow contains a cat's purr in liquid form. Don't ask us how we got it. Has stress-reducing capabilities." itemValue = "13.15" itemAmount = "1" itemAmountType = "vial"></item>
+ <item itemName = "Licorice Extract" itemDescription = "For taste!" itemValue = "3.50" itemAmount = "2" itemAmountType = "cups"></item>
+ <item itemName = "Vanilla Extract" itemDescription = "A sweet substance that promotes pure love." itemValue = "2.50" itemAmount = "2" itemAmountType = "tsp"></item>
+ <item itemName = "Apple Juice" itemDescription = "Tasty juice made from the best apples money can buy. Promotes romance!" itemValue = "3.50" itemAmount = "2" itemAmountType = "cups"></item>
+ <item itemName = "Cinnamon" itemDescription = "A spicy tasting herb to ~spice~ up your romance." itemValue = ".40" itemAmount = "1" itemAmountType = "tsp"></item>
+ <item itemName = "Unicorn Horn Shavings" itemDescription = "A very rare substance that can only be harvested by those pure enough of heart to approach a unicorn. Has very powerful protective properties." itemValue = "40.00" itemAmount = "1" itemAmountType = "pinch"></item>
+ <item itemName = "Red Wine" itemDescription = "An alcoholic beverage said to act as an aphrodisiac." itemValue = "50.00" itemAmount = "2" itemAmountType = "cups"></item>
+</inventory>

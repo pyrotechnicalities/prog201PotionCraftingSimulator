@@ -11,13 +11,14 @@ namespace PotionCraftingSimulator
     {
         public Player player = new Player();
         public Vendor vendor = new Vendor();
-        Recipe recipe = new Recipe();
         public List<Recipe> Recipes = new List<Recipe>();
 
         public Workshop()
         {
             SetPlayerName("Anon");
             Recipes = DataLoader.LoadRecipesFromExternalXMLFile("../../../data/recipes.xml");
+            player.Inventory = DataLoader.LoadItemsFromExternalXMLFile("../../../data/playerinventory.xml");
+            vendor.Inventory = DataLoader.LoadItemsFromExternalXMLFile("../../../data/vendorinventory.xml");
         }
 
         public string GetRecipeList()

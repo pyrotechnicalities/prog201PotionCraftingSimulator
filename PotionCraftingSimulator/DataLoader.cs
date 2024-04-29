@@ -62,5 +62,31 @@ namespace PotionCraftingSimulator
             }
             return recipes;
         }
+        public static List<Item> LoadItemsFromExternalXMLFile(string fileName)
+        {
+            List<Item> items = new List<Item>();
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.Load(fileName);
+            XmlNode root = xmlDocument.DocumentElement;
+            XmlNodeList inventoryList = root.SelectNodes("/inventory/item");
+
+            foreach (XmlElement item in inventoryList)
+            {
+                Item itemToAdd = new Item();
+                itemToAdd.ItemName = item.GetAttribute("itemName");
+                itemToAdd.ItemDescription = item.GetAttribute("itemDescription");
+                if (double.TryParse(item.GetAttribute("itemValue"), out double itemValue))
+                {
+                    itemToAdd.ItemValue = itemValue;
+                }
+                if (double.TryParse(item.GetAttribute("itemAmount"), out double itemAmount))
+                {
+                    itemToAdd.ItemAmount = itemAmount;
+                }
+                itemToAdd.ItemAmountType = item.GetAttribute("itemAmountType");
+                items.Add(itemToAdd);
+            }
+            return items;
+        }
     }
 }
