@@ -18,6 +18,7 @@ using System.Windows.Shapes;
  * Code framework from various examples by Janell Baxter
  * Assistance with generalized craft algorithm and associated methods also from Janell Baxter
  * Help with switch statement in Player.cs from https://stackoverflow.com/questions/68578/multiple-cases-in-switch-statement
+ * Delegate code from Canvas example https://canvas.colum.edu/courses/36298/pages/delegates-and-interfaces 
  */
 
 namespace PotionCraftingSimulator

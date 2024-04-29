@@ -8,7 +8,7 @@ using System.Windows.Shell;
 
 namespace PotionCraftingSimulator
 {
-    internal class Player : Person
+    internal class Player : Person, ITrade
     {
         public new double Currency = 0.00;
         
@@ -91,6 +91,14 @@ namespace PotionCraftingSimulator
             {
                 Inventory.Add(item);
             }
+        }
+        public void Buy()
+        {
+            // buy code
+        }
+        public void Sell()
+        {
+            // sell code
         }
     }
 }
